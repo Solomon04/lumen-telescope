@@ -2,7 +2,7 @@
 
 namespace Sarfraznawaz2005\Meter\Http\Controllers;
 
-use Illuminate\Routing\Controller;
+use Laravel\Lumen\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Sarfraznawaz2005\Meter\Charts\CommandsTimeChart;
 use Sarfraznawaz2005\Meter\Charts\ConnectionsChart;

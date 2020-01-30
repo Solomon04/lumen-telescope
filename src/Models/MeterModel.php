@@ -2,6 +2,7 @@
 
 namespace Sarfraznawaz2005\Meter\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,13 +44,13 @@ class MeterModel extends Model
             $builder = $query;
         } elseif (request()->has('days')) {
             // not using "WHERE DATE(created_at)" since created_at is index column.
-            $date = now()->subDays(request()->days)->toDateString();
+            $date = Carbon::now()->subDays(request()->days)->toDateString();
             $builder = $query->whereRaw("created_at >= '$date 00:00:00'");
         } elseif (request()->has('slow')) {
             $builder = $query->where('is_slow', 1);
         } else {
             // default today
-            $builder = $query->whereRaw("created_at >= '" . now()->toDateString() . " 00:00:00'");
+            $builder = $query->whereRaw("created_at >= '" . Carbon::now()->toDateString() . " 00:00:00'");
         }
 
         return $builder;

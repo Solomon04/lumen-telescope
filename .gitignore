@@ -5,3 +5,4 @@ vendor
 coverage
 todo.txt
 push.sh
+.idea/

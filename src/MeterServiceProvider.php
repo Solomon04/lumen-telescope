@@ -2,13 +2,11 @@
 
 namespace Sarfraznawaz2005\Meter;
 
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Route;
+use Laravel\Lumen\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Sarfraznawaz2005\Meter\Console\PruneCommand;
 use Sarfraznawaz2005\Meter\Console\PublishCommand;
 use Sarfraznawaz2005\Meter\Console\ServerMonitorCommand;
-use Sarfraznawaz2005\Meter\Http\Middleware\BasicAuth;
 
 class MeterServiceProvider extends ServiceProvider
 {
@@ -29,25 +27,17 @@ class MeterServiceProvider extends ServiceProvider
 
         Meter::start($this->app);
 
-        if (method_exists($router, 'aliasMiddleware')) {
-            $router->aliasMiddleware('auth.basic_meter', BasicAuth::class);
-        } else {
-            $router->middleware('auth.basic_meter', BasicAuth::class);
-        }
-
-        Route::middlewareGroup('meter', array_merge(config('meter.middleware', []), ['web', 'auth.basic_meter']));
-
         $this->loadViewsFrom(__DIR__ . '/Resources/Views', 'meter');
 
         $this->loadMigrationsFrom(__DIR__ . '/Migrations');
 
-        Route::group([
+        $this->app->router->group([
             'domain' => config('meter.domain', null),
             'namespace' => 'Sarfraznawaz2005\Meter\Http\Controllers',
             'prefix' => config('meter.path'),
-            'middleware' => 'meter',
-        ], function () {
-            $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
+            'middleware' => 'auth.basic_meter',
+        ], function ($router){
+            require __DIR__ . '/Http/routes.php';
         });
     }
 

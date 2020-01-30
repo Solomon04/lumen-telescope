@@ -1,6 +1,6 @@
 {
-    "name": "sarfraznawaz2005/meter",
-    "description": "laravel package to find performance bottlenecks in your laravel application.",
+    "name": "solomon04/lumen-telescope",
+    "description": "lumen package to find performance bottlenecks in your application.",
     "keywords": [
         "laravel",
         "performance",
@@ -10,15 +10,22 @@
         "queries",
         "database",
         "monitor",
-        "health"
+        "health",
+        "lumen",
+        "telescope"
     ],
-    "homepage": "https://github.com/sarfraznawaz2005/meter",
+    "homepage": "https://github.com/solomon04/lumen-telescope",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
             "name": "Sarfraz Ahmed",
             "email": "sarfraznawaz2005@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Solomon Antoine",
+            "email": "antoinesolomon5@gmail.com@gmail.com",
             "role": "Developer"
         }
     ],
@@ -54,5 +61,9 @@
                 "Sarfraznawaz2005\\Meter\\MeterServiceProvider"
             ]
         }
+    },
+    "suggest": {
+        "laravelista/lumen-vendor-publish": "Enables use of php artisan vendor:publish in Lumen",
+        "albertcht/lumen-helpers": "To support Laravel 's unsupported helper methods in Lumen"
     }
 }

@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+/** @var \Laravel\Lumen\Routing\Router $router */
 
 // pages
-Route::get('/', 'PagesController@home')->name('meter_home');
-Route::get('requests', 'PagesController@requests')->name('meter_requests');
-Route::get('queries', 'PagesController@queries')->name('meter_queries');
-Route::get('commands', 'PagesController@commands')->name('meter_commands');
-Route::get('events', 'PagesController@events')->name('meter_events');
-Route::get('schedules', 'PagesController@schedules')->name('meter_schedules');
-Route::get('server_stats', 'PagesController@serverStats')->name('meter_server_stats');
+$router->get('/', ['as' => 'meter_home', 'uses' => 'PagesController@home']);
+$router->get('requests', ['as' => 'meter_requests', 'uses' => 'PagesController@requests']);
+$router->get('queries', ['as' => 'meter_queries', 'uses' => 'PagesController@queries']);
+$router->get('commands', ['as' => 'meter_commands', 'uses' => 'PagesController@commands']);
+$router->get('events', ['as' => 'meter_events', 'uses' => 'PagesController@events']);
+$router->get('schedules', ['as' => 'meter_schedules', 'uses' => 'PagesController@schedules']);
+$router->get('server_stats', ['as' => 'meter_server_stats', 'uses' => 'PagesController@serverStats']);
 
 // tables
-Route::get('requests_table', 'TablesController@requestsTable')->name('meter_requests_table');
-Route::get('queries_table', 'TablesController@queriesTable')->name('meter_queries_table');
-Route::get('commands_table', 'TablesController@commandsTable')->name('meter_commands_table');
-Route::get('events_table', 'TablesController@eventsTable')->name('meter_events_table');
-Route::get('schedules_table', 'TablesController@schedulesTable')->name('meter_schedules_table');
+$router->get('requests_table', ['as' => 'meter_requests_table', 'uses' => 'TablesController@requestsTable']);
+$router->get('queries_table', ['as' => 'meter_queries_table', 'uses' => 'TablesController@queriesTable']);
+$router->get('commands_table', ['as' => 'meter_commands_table', 'uses' => 'TablesController@commandsTable']);
+$router->get('events_table', ['as' => 'meter_events_table', 'uses' => 'TablesController@eventsTable']);
+$router->get('schedules_table', ['as' => 'meter_schedules_table', 'uses' => 'TablesController@schedulesTable']);
